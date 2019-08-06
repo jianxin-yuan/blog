@@ -61,7 +61,7 @@
 </script>
 
   <meta name="description" content="前言本文主要介绍Next的一些进阶配置,如集成评论系统,本地搜索,进度条等.各种第三方服务集成,个人定制化.能让你的博客具备完善的功能….">
-<meta name="keywords" content="Next主题,Hexo">
+<meta name="keywords" content="Hexo,Next主题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NexT进阶配置">
 <meta property="og:url" content="https://jianxin-yuan.github.io/blog/posts/3790268221.html">
@@ -71,7 +71,7 @@
 <meta property="og:image" content="https://jianxin-yuan.github.io/blog/images/Hexo+NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/image-20190805220732396.png">
 <meta property="og:image" content="https://jianxin-yuan.github.io/blog/images/Hexo+NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/image-20190805221326714.png">
 <meta property="og:image" content="https://jianxin-yuan.github.io/blog/images/NexT%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/image-20190806104806731.png">
-<meta property="og:updated_time" content="2019-08-06T02:48:17.924Z">
+<meta property="og:updated_time" content="2019-08-06T08:20:06.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NexT进阶配置">
 <meta name="twitter:description" content="前言本文主要介绍Next的一些进阶配置,如集成评论系统,本地搜索,进度条等.各种第三方服务集成,个人定制化.能让你的博客具备完善的功能….">
@@ -309,7 +309,7 @@
                 
               
 
-              <time title="创建时间：2019-08-06 09:44:28 / 修改时间：10:48:17" itemprop="dateCreated datePublished" datetime="2019-08-06T09:44:28+08:00">2019-08-06</time>
+              <time title="创建时间：2019-08-06 09:44:28 / 修改时间：16:20:06" itemprop="dateCreated datePublished" datetime="2019-08-06T09:44:28+08:00">2019-08-06</time>
             </span>
           
             
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">6k</span>
+              <span title="本文字数">7.3k</span>
             </span>
           
             <span class="post-meta-item">
@@ -359,7 +359,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">10 分钟</span>
+              <span title="阅读时长">12 分钟</span>
             </span>
           
 
@@ -427,6 +427,21 @@
 
 </li>
 </ul>
+<h4 id="个性化回到顶部"><a href="#个性化回到顶部" class="headerlink" title="个性化回到顶部"></a>个性化回到顶部</h4><ul>
+<li><p>就是右侧那个猫咪啦→→→,首先找一张喜欢的图片,将图片放入<code>/hexo/source/images/</code>目录下, <a href="../images/scroll.png " target="_blank">点击下载</a></p>
+</li>
+<li><p>修改<code>next/_config.yml</code>下的<code>custom_file_path</code>节点</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.swig</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.swig</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.swig</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.swig</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.swig</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.swig</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.swig</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line"><span class="attr">  style:</span> <span class="string">source/_custom/custom.styl</span>   <span class="comment"># 根目录下的/source/,不是主题下的/source/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>hexo/source/</code>目录下新建<code>_custom</code>目录,添加<code>custom.styl</code>文件,加入下面的内容</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//自定义回到顶部样式</span><br><span class="line"><span class="selector-class">.back-to-top</span> &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">25px</span>;</span><br><span class="line">  width: 70px;  //图片素材宽度</span><br><span class="line">  height: 900px;  //图片素材高度</span><br><span class="line">  <span class="selector-tag">top</span>: <span class="selector-tag">-900px</span>;</span><br><span class="line">  //bottom: unset;</span><br><span class="line">  <span class="selector-tag">transition</span>: <span class="selector-tag">all</span> <span class="selector-class">.5s</span> <span class="selector-tag">ease-in-out</span>;</span><br><span class="line">  background url("../images/scroll.png")</span><br><span class="line">  //隐藏箭头图标</span><br><span class="line">  &gt; <span class="selector-tag">i</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-class">.back-to-top-on</span> &#123;</span><br><span class="line">    <span class="attribute">bottom</span>: unset;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100vh</span> &lt; (<span class="number">900px</span> + <span class="number">200px</span>) ? <span class="built_in">calc</span>( 100vh - 900px - 200px ) : <span class="number">0px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意:这里需要将<code>next/_config.yml</code>下的侧边栏回到顶部<code>back2top.sidebar</code>关掉,不然会有点小问题</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; back2top:</span></span><br><span class="line"><span class="string">&gt;   enable: true</span></span><br><span class="line"><span class="string">&gt;   # Back to top in sidebar.</span></span><br><span class="line"><span class="string">&gt;   sidebar: false</span></span><br><span class="line"><span class="string">&gt;   # Scroll percent label in b2t button.</span></span><br><span class="line"><span class="string">&gt;   scrollpercent: true</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
 <h4 id="图片放大预览"><a href="#图片放大预览" class="headerlink" title="图片放大预览"></a>图片放大预览</h4><ul>
 <li><p>图片预览可以使用<code>fancybox</code>或者<code>mediumzoom</code>,但是不要同时启用2个,不然会出现2次预览</p>
 <ul>
@@ -481,6 +496,12 @@
 </li>
 </ul>
 <p><img src="../images/NexT%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE/image-20190806104806731.png" alt="image-20190806104806731"></p>
+<p> <strong>参考链接</strong></p>
+<ul>
+<li><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">yearito|Hexo 搭建个人博客系列：主题美化篇</a></li>
+<li><a href="https://wylu.github.io/posts/e0424f3f/" target="_blank" rel="noopener">wylu|NexT主题进阶配置</a></li>
+<li><a href="https://theme-next.org/docs/theme-settings/" target="_blank" rel="noopener">NexT Theme Doc</a></li>
+</ul>
 
     </div>
 
@@ -530,9 +551,9 @@
           
         
         <div class="post-tags">
-            <a href="/blog/tags/Next主题/" rel="tag"><i class="fa fa-tag"></i> Next主题</a>
-          
             <a href="/blog/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          
+            <a href="/blog/tags/Next主题/" rel="tag"><i class="fa fa-tag"></i> Next主题</a>
           
         </div>
         <div class="post-widgets">
@@ -710,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶配置"><span class="nav-number">2.</span> <span class="nav-text">进阶配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地搜索"><span class="nav-number">2.1.</span> <span class="nav-text">本地搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顶部阅读进度条"><span class="nav-number">2.2.</span> <span class="nav-text">顶部阅读进度条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章加载进度条"><span class="nav-number">2.3.</span> <span class="nav-text">文章加载进度条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章字数统计和阅读时间"><span class="nav-number">2.4.</span> <span class="nav-text">文章字数统计和阅读时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分享按钮"><span class="nav-number">2.5.</span> <span class="nav-text">分享按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片放大预览"><span class="nav-number">2.6.</span> <span class="nav-text">图片放大预览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成Gitalk评论系统"><span class="nav-number">2.7.</span> <span class="nav-text">集成Gitalk评论系统</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶配置"><span class="nav-number">2.</span> <span class="nav-text">进阶配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地搜索"><span class="nav-number">2.1.</span> <span class="nav-text">本地搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顶部阅读进度条"><span class="nav-number">2.2.</span> <span class="nav-text">顶部阅读进度条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章加载进度条"><span class="nav-number">2.3.</span> <span class="nav-text">文章加载进度条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章字数统计和阅读时间"><span class="nav-number">2.4.</span> <span class="nav-text">文章字数统计和阅读时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分享按钮"><span class="nav-number">2.5.</span> <span class="nav-text">分享按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个性化回到顶部"><span class="nav-number">2.6.</span> <span class="nav-text">个性化回到顶部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片放大预览"><span class="nav-number">2.7.</span> <span class="nav-text">图片放大预览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成Gitalk评论系统"><span class="nav-number">2.8.</span> <span class="nav-text">集成Gitalk评论系统</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -739,7 +760,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">19k</span>
+    <span title="站点总字数">20k</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
