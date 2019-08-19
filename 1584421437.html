@@ -74,16 +74,16 @@
 <meta property="og:site_name" content="Code.Yuan">
 <meta property="og:description" content="开发过程中,热部署是一个十分重要的功能,避免了频繁重启应用带来的时间上的浪费,Spring Boot作为当前最火的java企业级应用开发框架.自然也是提供了相应功能.spring-boot-devtools是Spring Boot提供的一个开发工具模块,提供了一系列好用的功能,使应用程序开发更加快速和高效.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/1584421437/image-20190816162452949.png">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/1584421437/image-20190816162332921.png">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/1584421437/image-20190816170515364.png">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/1584421437/image-20190816170538806.png">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/1584421437/image-20190816170551563.png">
-<meta property="og:updated_time" content="2019-08-16T15:05:36.345Z">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819143603-9M6tHb.png">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819143601-COwLYo.png">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819143604-KXnqAI.png">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819143605-DXWQQ7.png">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819143605-PDZmzy.png">
+<meta property="og:updated_time" content="2019-08-19T06:50:03.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-boot-devtools 热部署">
 <meta name="twitter:description" content="开发过程中,热部署是一个十分重要的功能,避免了频繁重启应用带来的时间上的浪费,Spring Boot作为当前最火的java企业级应用开发框架.自然也是提供了相应功能.spring-boot-devtools是Spring Boot提供的一个开发工具模块,提供了一系列好用的功能,使应用程序开发更加快速和高效.">
-<meta name="twitter:image" content="https://jianxin-yuan.github.io/blog/1584421437/image-20190816162452949.png">
+<meta name="twitter:image" content="http://image.ihezz.com/blog/20190819143603-9M6tHb.png">
   <link rel="canonical" href="https://jianxin-yuan.github.io/blog/1584421437">
 
 
@@ -288,7 +288,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Code.Yuan">
       <meta itemprop="description" content="陪伴是最长情的告白">
-      <meta itemprop="image" content="/blog/images/avatar/avatar.jpg">
+      <meta itemprop="image" content="http://image.ihezz.com/blog/20190819154446-rdCB1v.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -330,7 +330,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-16 23:05:36" itemprop="dateModified" datetime="2019-08-16T23:05:36+08:00">2019-08-16</time>
+                <time title="修改时间：2019-08-19 14:50:03" itemprop="dateModified" datetime="2019-08-19T14:50:03+08:00">2019-08-19</time>
               </span>
             
           
@@ -406,17 +406,16 @@
 <h3 id="IDEA中配置"><a href="#IDEA中配置" class="headerlink" title="IDEA中配置"></a>IDEA中配置</h3><ul>
 <li><p>由于<code>spring-boot-devtools</code>只有在检测到类路径下的文件变化时才会触发重启,而IDEA是默认是不会自动编译文件的.所以会出现修改了类文件,html.js等.但没有重启的情况.这里介绍2种解决方法</p>
 <h4 id="方式1-修改springboot-configuration实现-个人推荐"><a href="#方式1-修改springboot-configuration实现-个人推荐" class="headerlink" title="方式1:修改springboot configuration实现(个人推荐)"></a>方式1:修改springboot configuration实现(个人推荐)</h4><ul>
-<li>点击<code>Run &gt; Edit Configurations</code> 进入配置页面 <img src="/blog/1584421437/image-20190816162452949.png" alt="image-20190816162452949"></li>
-</ul>
+<li><p>点击<code>Run &gt; Edit Configurations</code> 进入配置页面<img src="http://image.ihezz.com/blog/20190819143603-9M6tHb.png" alt="菜单"></p>
 </li>
-<li><p>将 <code>on frame deactivation</code> 修改为 <code>update classes and resoruce</code>,这个表示idea失去焦点时(如切换到浏览器或其他界面)更新class 和resource,然后就会触发<code>spring-boot-devtools</code>的重启机制了.<img src="/blog/1584421437/image-20190816162332921.png" alt="image-20190816162332921"></p>
+<li><p>将 <code>on frame deactivation</code> 修改为 <code>update classes and resoruce</code>,这个表示idea失去焦点时(如切换到浏览器或其他界面)更新class 和resource,然后就会触发<code>spring-boot-devtools</code>的重启机制了.<img src="http://image.ihezz.com/blog/20190819143601-COwLYo.png" alt="pic"></p>
+<h4 id="方式2-修改idea为自动编译进入"><a href="#方式2-修改idea为自动编译进入" class="headerlink" title="方式2:修改idea为自动编译进入"></a>方式2:修改idea为自动编译进入</h4></li>
+<li><p><code>Preferences &gt; compiler</code>,勾选<code>build project automatically</code><img src="http://image.ihezz.com/blog/20190819143604-KXnqAI.png" alt="pic"></p>
 </li>
-</ul>
-<h4 id="方式2-修改idea为自动编译"><a href="#方式2-修改idea为自动编译" class="headerlink" title="方式2:修改idea为自动编译"></a>方式2:修改idea为自动编译</h4><ul>
-<li>进入<code>Preferences &gt; compiler</code>,勾选<code>build project automatically</code><ul>
-<li><img src="/blog/1584421437/image-20190816170515364.png" alt="image-20190816170515364"></li>
-<li>双击<code>shift</code>,输入<code>registry</code><img src="/blog/1584421437/image-20190816170538806.png" alt="image-20190816170538806"></li>
-<li>勾选<code>compiler.automake.allow.when.app.running</code> 即可开启idea的自动编译,重启项目,修改文件.可以看到spring boot会重启了 <img src="/blog/1584421437/image-20190816170551563.png" alt="image-20190816170551563"></li>
+<li><p>双击<code>shift</code>,输入<code>registry</code><img src="http://image.ihezz.com/blog/20190819143605-DXWQQ7.png" alt="pic"></p>
+</li>
+<li><p>勾选<code>compiler.automake.allow.when.app.running</code> 即可开启idea的自动编译,重启项目,修改文件.可以看到spring boot会重启了 <img src="http://image.ihezz.com/blog/20190819143605-PDZmzy.png" alt="pic"></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -575,7 +574,7 @@
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
-      src="/blog/images/avatar/avatar.jpg"
+      src="http://image.ihezz.com/blog/20190819154446-rdCB1v.gif"
       alt="Code.Yuan">
   <p class="site-author-name" itemprop="name">Code.Yuan</p>
   <div class="site-description motion-element" itemprop="description">陪伴是最长情的告白</div>
@@ -680,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖"><span class="nav-number">1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA中配置"><span class="nav-number">2.</span> <span class="nav-text">IDEA中配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式1-修改springboot-configuration实现-个人推荐"><span class="nav-number">2.1.</span> <span class="nav-text">方式1:修改springboot configuration实现(个人推荐)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式2-修改idea为自动编译"><span class="nav-number">2.2.</span> <span class="nav-text">方式2:修改idea为自动编译</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用触发文件"><span class="nav-number">3.</span> <span class="nav-text">使用触发文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义重启类加载器"><span class="nav-number">4.</span> <span class="nav-text">自定义重启类加载器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖"><span class="nav-number">1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA中配置"><span class="nav-number">2.</span> <span class="nav-text">IDEA中配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式1-修改springboot-configuration实现-个人推荐"><span class="nav-number">2.1.</span> <span class="nav-text">方式1:修改springboot configuration实现(个人推荐)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式2-修改idea为自动编译进入"><span class="nav-number">2.2.</span> <span class="nav-text">方式2:修改idea为自动编译进入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用触发文件"><span class="nav-number">3.</span> <span class="nav-text">使用触发文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义重启类加载器"><span class="nav-number">4.</span> <span class="nav-text">自定义重启类加载器</span></a></li></ol></div>
             
 
           </div>

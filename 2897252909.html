@@ -74,14 +74,14 @@
 <meta property="og:site_name" content="Code.Yuan">
 <meta property="og:description" content="hexo-abbrlink是设置永久链接的插件,hexo-asset-image是设置图片地址的插件,分开了用皆大欢喜,但当我们都用上后发现会出现各种问题.愁死个人呐!  😂😂😂 本文记录了几个个人遇到的问题及最终的解决方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/2897252909/image-20190817114932923.png">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/2897252909/image-20190817121343208.png">
-<meta property="og:image" content="https://jianxin-yuan.github.io/blog/2897252909/image-20190817123727261.png">
-<meta property="og:updated_time" content="2019-08-17T05:19:15.099Z">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819145934-dwTPGw.png">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819145936-DqtcYK.png">
+<meta property="og:image" content="http://image.ihezz.com/blog/20190819145937-7VtAaI.png">
+<meta property="og:updated_time" content="2019-08-19T07:00:39.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo-asset-image与hexo-abbrlink带给我的苦恼">
 <meta name="twitter:description" content="hexo-abbrlink是设置永久链接的插件,hexo-asset-image是设置图片地址的插件,分开了用皆大欢喜,但当我们都用上后发现会出现各种问题.愁死个人呐!  😂😂😂 本文记录了几个个人遇到的问题及最终的解决方法">
-<meta name="twitter:image" content="https://jianxin-yuan.github.io/blog/2897252909/image-20190817114932923.png">
+<meta name="twitter:image" content="http://image.ihezz.com/blog/20190819145934-dwTPGw.png">
   <link rel="canonical" href="https://jianxin-yuan.github.io/blog/2897252909">
 
 
@@ -286,7 +286,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Code.Yuan">
       <meta itemprop="description" content="陪伴是最长情的告白">
-      <meta itemprop="image" content="/blog/images/avatar/avatar.jpg">
+      <meta itemprop="image" content="http://image.ihezz.com/blog/20190819154446-rdCB1v.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -328,7 +328,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-17 13:19:15" itemprop="dateModified" datetime="2019-08-17T13:19:15+08:00">2019-08-17</time>
+                <time title="修改时间：2019-08-19 15:00:39" itemprop="dateModified" datetime="2019-08-19T15:00:39+08:00">2019-08-19</time>
               </span>
             
           
@@ -411,7 +411,7 @@
 
 </li>
 </ul>
-<p>  <img src="/blog/2897252909/image-20190817114932923.png" alt="image-20190817114932923"></p>
+<p>  <img src="http://image.ihezz.com/blog/20190819145934-dwTPGw.png" alt="pic"></p>
 <p>  这样当你的permalink设置为下面几种格式,图片都是可以正常显示的</p>
   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:abbrlink.html</span>  <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/3632233996.html</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:abbrlink/</span>  <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/3632233996/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span> <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/2019/10/11/test/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/index.html</span> <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/2019/10/11/test/index.html</span></span><br></pre></td></tr></table></figure>
 
@@ -419,12 +419,12 @@
 <li><p>由于我的博客是运行在子目录的.<code>next/_config.yml</code>配置如下.</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="attr">https://jianxin-yuan.github.io/blog/</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/blog/</span></span><br></pre></td></tr></table></figure>
 
-<p>所有在hexo-asset-image替换图片的时候会将/blog/重复2次,导致图片无法正常显示,如下<img src="/blog/2897252909/image-20190817121343208.png" alt="image-20190817121343208"></p>
+<p>所有在hexo-asset-image替换图片的时候会将/blog/重复2次,导致图片无法正常显示,如下<img src="http://image.ihezz.com/blog/20190819145936-DqtcYK.png" alt="pic"></p>
 <p>这个问题同样是在 <a href="https://github.com/xcodebuild/hexo-asset-image/issues/52" target="_blank" rel="noopener">issue-52</a> 上找到的答案</p>
 <p>修改index.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> directory_Depth = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> child_Depth = config.root.split(<span class="string">"/"</span>).length - <span class="number">2</span>;</span><br><span class="line">directory_Depth = child_Depth &gt; <span class="number">0</span> ? directory_Depth + child_Depth : directory_Depth;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">var</span> beginPos = getPosition(link, <span class="string">'/'</span>, directory_Depth) + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/blog/2897252909/image-20190817123727261.png" alt="image-20190817123727261"></p>
+<p><img src="http://image.ihezz.com/blog/20190819145937-7VtAaI.png" alt="pic"></p>
 </li>
 </ul>
 <p>后续版本不知道作者会不会修复这些问题.提了个PR,也不知道会不会采纳…愁啊…..</p>
@@ -565,7 +565,7 @@
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
-      src="/blog/images/avatar/avatar.jpg"
+      src="http://image.ihezz.com/blog/20190819154446-rdCB1v.gif"
       alt="Code.Yuan">
   <p class="site-author-name" itemprop="name">Code.Yuan</p>
   <div class="site-description motion-element" itemprop="description">陪伴是最长情的告白</div>
