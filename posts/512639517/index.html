@@ -66,23 +66,19 @@
   };
 </script>
 
-  <meta name="description" content="hexo-abbrlink是设置永久链接的插件,hexo-asset-image是设置图片地址的插件,分开了用皆大欢喜,但当我们都用上后发现会出现各种问题.愁死个人呐!  😂😂😂 本文记录了几个个人遇到的问题及最终的解决方法">
-<meta name="keywords" content="Hexo,hexo-asset-image,hexo-abbrlink">
+  <meta name="description" content="idea新建maven项目时.默认使用的是JDK1.5,导致经常我们设置了jdk版本也提示不对.这里介绍一下正确的设置方法.">
+<meta name="keywords" content="maven,JDK版本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo-asset-image与hexo-abbrlink带给我的苦恼">
-<meta property="og:url" content="https://jianxin-yuan.github.io/blog/2897252909.html">
+<meta property="og:title" content="maven编译打包的JDK版本">
+<meta property="og:url" content="https://jianxin-yuan.github.io/blog/posts/512639517/index.html">
 <meta property="og:site_name" content="Code.Yuan">
-<meta property="og:description" content="hexo-abbrlink是设置永久链接的插件,hexo-asset-image是设置图片地址的插件,分开了用皆大欢喜,但当我们都用上后发现会出现各种问题.愁死个人呐!  😂😂😂 本文记录了几个个人遇到的问题及最终的解决方法">
+<meta property="og:description" content="idea新建maven项目时.默认使用的是JDK1.5,导致经常我们设置了jdk版本也提示不对.这里介绍一下正确的设置方法.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://image.ihezz.com/blog/20190819145934-dwTPGw.png">
-<meta property="og:image" content="http://image.ihezz.com/blog/20190819145936-DqtcYK.png">
-<meta property="og:image" content="http://image.ihezz.com/blog/20190819145937-7VtAaI.png">
-<meta property="og:updated_time" content="2019-08-19T07:00:39.239Z">
+<meta property="og:updated_time" content="2019-10-20T10:38:03.038Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo-asset-image与hexo-abbrlink带给我的苦恼">
-<meta name="twitter:description" content="hexo-abbrlink是设置永久链接的插件,hexo-asset-image是设置图片地址的插件,分开了用皆大欢喜,但当我们都用上后发现会出现各种问题.愁死个人呐!  😂😂😂 本文记录了几个个人遇到的问题及最终的解决方法">
-<meta name="twitter:image" content="http://image.ihezz.com/blog/20190819145934-dwTPGw.png">
-  <link rel="canonical" href="https://jianxin-yuan.github.io/blog/2897252909">
+<meta name="twitter:title" content="maven编译打包的JDK版本">
+<meta name="twitter:description" content="idea新建maven项目时.默认使用的是JDK1.5,导致经常我们设置了jdk版本也提示不对.这里介绍一下正确的设置方法.">
+  <link rel="canonical" href="https://jianxin-yuan.github.io/blog/posts/512639517/">
 
 
 <script id="page.configurations">
@@ -91,7 +87,7 @@
   };
 </script>
 
-  <title>hexo-asset-image与hexo-abbrlink带给我的苦恼 | Code.Yuan</title>
+  <title>maven编译打包的JDK版本 | Code.Yuan</title>
   
 
 
@@ -184,7 +180,7 @@
       
     
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
 
   </li>
         
@@ -197,7 +193,7 @@
       
     
 
-    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
 
   </li>
         
@@ -210,7 +206,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章<span class="badge">9</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章<span class="badge">12</span></a>
 
   </li>
         
@@ -281,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jianxin-yuan.github.io/blog/blog/2897252909.html">
+    <link itemprop="mainEntityOfPage" href="https://jianxin-yuan.github.io/blog/blog/posts/512639517/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Code.Yuan">
@@ -295,7 +291,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">hexo-asset-image与hexo-abbrlink带给我的苦恼
+          <h1 class="post-title" itemprop="name headline">maven编译打包的JDK版本
 
               
             
@@ -315,21 +311,11 @@
                 
               
 
-              <time title="创建时间：2019-08-16 23:33:54" itemprop="dateCreated datePublished" datetime="2019-08-16T23:33:54+08:00">2019-08-16</time>
+              <time title="创建时间：2019-10-20 17:50:37 / 修改时间：18:38:03" itemprop="dateCreated datePublished" datetime="2019-10-20T17:50:37+08:00">2019-10-20</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-19 15:00:39" itemprop="dateModified" datetime="2019-08-19T15:00:39+08:00">2019-08-19</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -340,7 +326,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/maven/" itemprop="url" rel="index"><span itemprop="name">maven</span></a></span>
 
                 
                 
@@ -365,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.9k</span>
+              <span title="本文字数">1.8k</span>
             </span>
           
             <span class="post-meta-item">
@@ -388,47 +374,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>hexo-abbrlink是设置永久链接的插件,hexo-asset-image是设置图片地址的插件,分开了用皆大欢喜,但当我们都用上后发现会出现各种问题.愁死个人呐!  😂😂😂</p>
-<p>本文记录了几个个人遇到的问题及最终的解决方法</p>
+        <p>idea新建maven项目时.默认使用的是JDK1.5,导致经常我们设置了jdk版本也提示不对.这里介绍一下正确的设置方法.</p>
 <a id="more"></a>
 
-<h3 id="hexo-asset-image介绍"><a href="#hexo-asset-image介绍" class="headerlink" title="hexo-asset-image介绍"></a>hexo-asset-image介绍</h3><p>首先当我们启用了hexo-asset-image后,会设置<code>next/_config.yml</code>的<code>post_asset_folder</code>节点为<code>ture</code></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="全局设置"><a href="#全局设置" class="headerlink" title="全局设置"></a>全局设置</h3><ul>
+<li><p>全局配置是指在<code>${MAVEN_HOME}\conf\settings.xml</code>中进行配置，这样以后新建的项目默认就会使用这里配置的JDK版本,在 <code>&lt;profiles&gt;</code>节点下加入下面的配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>jdk11<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>11<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span>  </span><br><span class="line">      <span class="comment">&lt;!--使用JDK11编译--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.compilerVersion</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.compilerVersion</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>这个时候当我们运行 hexo new “test”,生成一篇文章后,在同级目录下会生成一个同名的(test)文件夹,我们文章里的图片都需要放入这个文件夹里,结构如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── test</span><br><span class="line">│   └── banner.jpg</span><br><span class="line">└── test.md</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <code>${MAVEN_HOME}</code>指的是maven的安装目录</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="项目设置"><a href="#项目设置" class="headerlink" title="项目设置"></a>项目设置</h3><ul>
+<li><p>可以对每个项目单独设置编译的JDK版本,这里也分插件方式和属性方式</p>
+<h4 id="插件方式"><a href="#插件方式" class="headerlink" title="插件方式"></a>插件方式</h4><ul>
+<li>在项目的pom.xml中加入下面配置即可</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- maven-compiler-plugin:设置项目jdk开发和编译版本 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>11<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>11<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>这样在markdown里引用文件就可以写成这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![banner图片](test/banner.jpg)</span><br></pre></td></tr></table></figure>
-
-<p>然后hexo g 生成的页面中就可以看到图片了.</p>
-<p>如何你的图片都正常显示,那恭喜你.接下来的文章你可以不看了……………..</p>
-<h3 id="问题1-permalink-abbrlink-html-显示异常"><a href="#问题1-permalink-abbrlink-html-显示异常" class="headerlink" title="问题1 permalink=:abbrlink.html 显示异常"></a>问题1 permalink=:abbrlink.html 显示异常</h3><ul>
-<li><p>将<code>permalink=:abbrlink.html</code> 设置为.html后缀时,可以将网站模拟成伪静态.这对SEO是有好处的,但是这会导致<code>heox-asset-image</code>替换图片地址是出现bug,百度,google了半天没找到解决办法(ps:倒是看了一堆废话),最后想到了直接上GitHub <a href="https://github.com/xcodebuild/hexo-asset-image" target="_blank" rel="noopener">hexo-asset-image</a> 上去看看项目的<code>issue</code>,结果还真有.嘿嘿嘿😝.</p>
-<p>有好几个issue都有提到这个问题,比如<a href="https://github.com/xcodebuild/hexo-asset-image/issues/21" target="_blank" rel="noopener">issue-21</a>,<a href="https://github.com/xcodebuild/hexo-asset-image/issues/19" target="_blank" rel="noopener">issue-19</a>,但是作者自己也没有解决,最后在<a href="https://github.com/xcodebuild/hexo-asset-image/issues/48" target="_blank" rel="noopener">issue-48</a>里找到了答案.然后自己修改了下hexo-asset-image 插件的 index.js(位置在站点根目录<code>/node_modules/hexo-asset-image/index.js</code>),最终解决!!!,加入下面代码到指定位置即可</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/.*\.html$/</span>.test(link))&#123;</span><br><span class="line">    <span class="keyword">var</span> endPos = link.length<span class="number">-5</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
+<h4 id="属性方式"><a href="#属性方式" class="headerlink" title="属性方式"></a>属性方式</h4><ul>
+<li>在项目pom.xml中加入下列配置,同时可以指定文件编码</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">  			<span class="comment">&lt;!--JDK版本--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">   		  <span class="comment">&lt;!--文件编码--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.reporting.outputEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>  <img src="http://image.ihezz.com/blog/20190819145934-dwTPGw.png" alt="pic"></p>
-<p>  这样当你的permalink设置为下面几种格式,图片都是可以正常显示的</p>
-  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:abbrlink.html</span>  <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/3632233996.html</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:abbrlink/</span>  <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/3632233996/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span> <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/2019/10/11/test/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/index.html</span> <span class="bullet">--&gt;</span> <span class="attr">http://localhost:4000/blog/2019/10/11/test/index.html</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="问题2-站点运行在子目录下时-显示异常"><a href="#问题2-站点运行在子目录下时-显示异常" class="headerlink" title="问题2 站点运行在子目录下时 显示异常"></a>问题2 站点运行在子目录下时 显示异常</h3><ul>
-<li><p>由于我的博客是运行在子目录的.<code>next/_config.yml</code>配置如下.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="attr">https://jianxin-yuan.github.io/blog/</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/blog/</span></span><br></pre></td></tr></table></figure>
-
-<p>所有在hexo-asset-image替换图片的时候会将/blog/重复2次,导致图片无法正常显示,如下<img src="http://image.ihezz.com/blog/20190819145936-DqtcYK.png" alt="pic"></p>
-<p>这个问题同样是在 <a href="https://github.com/xcodebuild/hexo-asset-image/issues/52" target="_blank" rel="noopener">issue-52</a> 上找到的答案</p>
-<p>修改index.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> directory_Depth = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> child_Depth = config.root.split(<span class="string">"/"</span>).length - <span class="number">2</span>;</span><br><span class="line">directory_Depth = child_Depth &gt; <span class="number">0</span> ? directory_Depth + child_Depth : directory_Depth;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">var</span> beginPos = getPosition(link, <span class="string">'/'</span>, directory_Depth) + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://image.ihezz.com/blog/20190819145937-7VtAaI.png" alt="pic"></p>
-</li>
-</ul>
-<p>后续版本不知道作者会不会修复这些问题.提了个PR,也不知道会不会采纳…愁啊…..</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>百度不出来? google还不行? 那就上项目的GitHub上去找答案吧.项目的issue里藏了无数的宝藏</p>
 
     </div>
 
@@ -466,7 +437,7 @@
     <strong>本文作者： </strong>Code.Yuan</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://jianxin-yuan.github.io/blog/2897252909.html" title="hexo-asset-image与hexo-abbrlink带给我的苦恼">https://jianxin-yuan.github.io/blog/2897252909.html</a>
+    <a href="https://jianxin-yuan.github.io/blog/posts/512639517/" title="maven编译打包的JDK版本">https://jianxin-yuan.github.io/blog/posts/512639517/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -478,11 +449,9 @@
           
         
         <div class="post-tags">
-            <a href="/blog/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+            <a href="/blog/tags/maven/" rel="tag"><i class="fa fa-tag"></i> maven</a>
           
-            <a href="/blog/tags/hexo-asset-image/" rel="tag"><i class="fa fa-tag"></i> hexo-asset-image</a>
-          
-            <a href="/blog/tags/hexo-abbrlink/" rel="tag"><i class="fa fa-tag"></i> hexo-abbrlink</a>
+            <a href="/blog/tags/JDK版本/" rel="tag"><i class="fa fa-tag"></i> JDK版本</a>
           
         </div>
         <div class="post-widgets">
@@ -506,8 +475,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/blog/1584421437.html" rel="next" title="spring-boot-devtools 热部署">
-                <i class="fa fa-chevron-left"></i> spring-boot-devtools 热部署
+              <a href="/blog/posts/2897252909/" rel="next" title="hexo-asset-image与hexo-abbrlink带给我的苦恼">
+                <i class="fa fa-chevron-left"></i> hexo-asset-image与hexo-abbrlink带给我的苦恼
               </a>
             
           </div>
@@ -515,8 +484,8 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/blog/512639517.html" rel="prev" title="maven编译打包的JDK版本">
-                maven编译打包的JDK版本 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/posts/1988423942/" rel="prev" title="ssm+shiro实现登录认证授权">
+                ssm+shiro实现登录认证授权 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -579,7 +548,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -604,7 +573,9 @@
         
           
         
-        <span class="site-state-item-count">5</span>
+          
+        
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -643,7 +614,13 @@
         
           
         
-        <span class="site-state-item-count">12</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -688,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-asset-image介绍"><span class="nav-number">1.</span> <span class="nav-text">hexo-asset-image介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题1-permalink-abbrlink-html-显示异常"><span class="nav-number">2.</span> <span class="nav-text">问题1 permalink=:abbrlink.html 显示异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题2-站点运行在子目录下时-显示异常"><span class="nav-number">3.</span> <span class="nav-text">问题2 站点运行在子目录下时 显示异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局设置"><span class="nav-number">1.</span> <span class="nav-text">全局设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目设置"><span class="nav-number">2.</span> <span class="nav-text">项目设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插件方式"><span class="nav-number">2.1.</span> <span class="nav-text">插件方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性方式"><span class="nav-number">2.2.</span> <span class="nav-text">属性方式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -717,7 +694,14 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">45k</span>
+    <span title="站点总字数">51k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
