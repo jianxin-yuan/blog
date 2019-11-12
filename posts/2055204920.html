@@ -66,19 +66,19 @@
   };
 </script>
 
-  <meta name="description" content="本文主要介绍Git远程仓库的使用">
-<meta name="keywords" content="git 远程仓库">
+  <meta name="description" content="Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 与许多其它版本控制系统不同，Git 鼓励在工作流程中频繁地使用分支与合并，哪怕一天之内进行许多次.">
+<meta name="keywords" content="git 分支">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git关联远程仓库">
-<meta property="og:url" content="https://jianxin-yuan.github.io/blog/posts/3490727497/index.html">
+<meta property="og:title" content="Git分支">
+<meta property="og:url" content="https://jianxin-yuan.github.io/blog/posts/2055204920.html">
 <meta property="og:site_name" content="Code.Yuan">
-<meta property="og:description" content="本文主要介绍Git远程仓库的使用">
+<meta property="og:description" content="Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 与许多其它版本控制系统不同，Git 鼓励在工作流程中频繁地使用分支与合并，哪怕一天之内进行许多次.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-03T11:11:50.797Z">
+<meta property="og:updated_time" content="2019-11-12T08:19:48.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git关联远程仓库">
-<meta name="twitter:description" content="本文主要介绍Git远程仓库的使用">
-  <link rel="canonical" href="https://jianxin-yuan.github.io/blog/posts/3490727497/">
+<meta name="twitter:title" content="Git分支">
+<meta name="twitter:description" content="Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 与许多其它版本控制系统不同，Git 鼓励在工作流程中频繁地使用分支与合并，哪怕一天之内进行许多次.">
+  <link rel="canonical" href="https://jianxin-yuan.github.io/blog/posts/2055204920">
 
 
 <script id="page.configurations">
@@ -87,7 +87,7 @@
   };
 </script>
 
-  <title>Git关联远程仓库 | Code.Yuan</title>
+  <title>Git分支 | Code.Yuan</title>
   
 
 
@@ -180,7 +180,7 @@
       
     
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">19</span></a>
 
   </li>
         
@@ -206,7 +206,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章<span class="badge">12</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章<span class="badge">15</span></a>
 
   </li>
         
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jianxin-yuan.github.io/blog/blog/posts/3490727497/">
+    <link itemprop="mainEntityOfPage" href="https://jianxin-yuan.github.io/blog/blog/posts/2055204920.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Code.Yuan">
@@ -291,7 +291,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">Git关联远程仓库
+          <h1 class="post-title" itemprop="name headline">Git分支
 
               
             
@@ -311,7 +311,7 @@
                 
               
 
-              <time title="创建时间：2019-11-03 18:56:04 / 修改时间：19:11:50" itemprop="dateCreated datePublished" datetime="2019-11-03T18:56:04+08:00">2019-11-03</time>
+              <time title="创建时间：2019-11-12 16:09:17 / 修改时间：16:19:48" itemprop="dateCreated datePublished" datetime="2019-11-12T16:09:17+08:00">2019-11-12</time>
             </span>
           
             
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.6k</span>
+              <span title="本文字数">3k</span>
             </span>
           
             <span class="post-meta-item">
@@ -361,7 +361,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">3 分钟</span>
+              <span title="阅读时长">5 分钟</span>
             </span>
           
 
@@ -374,35 +374,80 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文主要介绍Git远程仓库的使用</p>
+        <p>Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 与许多其它版本控制系统不同，Git 鼓励在工作流程中频繁地使用分支与合并，哪怕一天之内进行许多次.</p>
 <a id="more"></a>
 
-<h3 id="git远程仓库"><a href="#git远程仓库" class="headerlink" title="git远程仓库"></a>git远程仓库</h3><p>运行 <code>git remote</code> 命令, 它会列出你指定的每一个远程服务器的简写,如果是从远程克隆下来的项目,默认有一个<code>origin</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
+<h2 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h2><h3 id="分支创建"><a href="#分支创建" class="headerlink" title="分支创建"></a>分支创建</h3><p>使用<code>git branch &lt;branchName&gt;</code> 创建分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch dev</span><br></pre></td></tr></table></figure>
 
-<p>可以指定选项 <code>-v</code>，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote -v</span><br><span class="line">origin	https://github.com/jianxin-yuan/git-flow-demo.git (fetch)</span><br><span class="line">origin	https://github.com/jianxin-yuan/git-flow-demo.git (push)</span><br></pre></td></tr></table></figure>
+<h3 id="查看分支列表"><a href="#查看分支列表" class="headerlink" title="查看分支列表"></a>查看分支列表</h3><p>使用<code>git branch</code> 可以查看所有分支,分支前的<code>*</code>表示当前所处的分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch</span><br><span class="line">* dev</span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
 
-<p>运行<code>git remote add &lt;shortname&gt; &lt;url&gt;</code> 添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/jianxin-yuan/git-flow-demo.git</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>选项:</p>
+<p>-v : 查看每个分支最后一次提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> $ git branch  -v</span><br><span class="line"><span class="meta">&gt;</span> * dev    3e910e9 add b.txt</span><br><span class="line"><span class="meta">&gt;</span>   master 11b7fa8 test commit</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>–merged:表示已合并到当前分支的分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> $ git branch  --merged</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>–no-merged:表示还未合并到当前分支的分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> $ git branch --no-merged</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>使用 <code>git checkout &lt;branchName&gt;</code> 切换分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git checkout dev</span><br><span class="line">Switched to branch 'dev'</span><br></pre></td></tr></table></figure>
 
-<p>git fetch [remote-name]  会将数据拉取到你的本地仓库——但是它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。</p>
-<h4 id="查看远程仓库信息"><a href="#查看远程仓库信息" class="headerlink" title="查看远程仓库信息"></a>查看远程仓库信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  Fetch URL: https://github.com/jianxin-yuan/git-flow-demo.git</span><br><span class="line">  Push  URL: https://github.com/jianxin-yuan/git-flow-demo.git</span><br><span class="line">  HEAD branch: master</span><br><span class="line">  Remote branches:</span><br><span class="line">    master                  tracked</span><br><span class="line">    refs/remotes/origin/dev stale (use 'git remote prune' to remove)</span><br><span class="line">    test                    tracked</span><br><span class="line">  Local branch configured for 'git pull':</span><br><span class="line">    master merges with remote master</span><br><span class="line">  Local ref configured for 'git push':</span><br><span class="line">    master pushes to master (up to date)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用<code>git chekcout -b &lt;branchName&gt;</code> 可以创建并切换到新分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> $ git checkout -b test</span><br><span class="line"><span class="meta">&gt;</span> Switched to a new branch 'test'</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="本地分支删除"><a href="#本地分支删除" class="headerlink" title="本地分支删除"></a>本地分支删除</h3><p>使用<code>git branch -d &lt;barnchName&gt;</code> 删除本地分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch -d v1.0_test</span><br><span class="line">Deleted branch v1.0_test (was 11b7fa8).</span><br></pre></td></tr></table></figure>
 
-<h4 id="清理无效的远程追踪分支"><a href="#清理无效的远程追踪分支" class="headerlink" title="清理无效的远程追踪分支"></a>清理无效的远程追踪分支</h4><p>清理origin对应的远程仓库的本地无效的追踪分支</p>
-<p><code>git remote show origin</code> 可以看到  <code>refs/remotes/origin/dev stale (use &#39;git remote prune&#39; to remove)</code>表示这个分支远程仓库已经删除了..</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote prune origin --dry-run  ##查看可以被清除的跟踪分支</span><br><span class="line">Pruning origin</span><br><span class="line">URL: https://github.com/jianxin-yuan/git-flow-demo.git</span><br><span class="line"> * [would prune] origin/dev  ##origin/dev 可以被清除</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当删除还未合并的分支时 <code>-d</code>会失败.如果确认需要删除.使用<code>-D</code>可以强制删除</p>
+</blockquote>
+<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><p>使用<code>git merge &lt;branchName&gt;</code> 合并其他分支到当前分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git merge dev</span><br><span class="line">Updating 79d9a49..ada313b</span><br><span class="line">Fast-forward</span><br><span class="line"> a.txt | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
 
-<p>清除无效的追踪分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote prune origin</span><br><span class="line">Pruning origin</span><br><span class="line">URL: https://github.com/jianxin-yuan/git-flow-demo.git</span><br><span class="line"> * [pruned] origin/dev ##origin/dev 被清除</span><br></pre></td></tr></table></figure>
+<h3 id="推送本地分支到远程仓库"><a href="#推送本地分支到远程仓库" class="headerlink" title="推送本地分支到远程仓库"></a>推送本地分支到远程仓库</h3><p>使用<code>git push &lt;remoteName&gt; &lt;localBranch&gt;:&lt;remoteBranch&gt;</code> 将本地分支推送到远程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git push origin dev:dev</span><br><span class="line">Enumerating objects: 4, done.</span><br><span class="line">Counting objects: 100% (4/4), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 301 bytes | 301.00 KiB/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">remote:</span><br><span class="line">remote: Create a pull request for 'dev' on GitHub by visiting:</span><br><span class="line">remote:      https://github.com/jianxin-yuan/git-flow-demo/pull/new/dev</span><br><span class="line">remote:</span><br><span class="line">To https://github.com/jianxin-yuan/git-flow-demo.git</span><br><span class="line"> * [new branch]      dev -&gt; dev</span><br></pre></td></tr></table></figure>
 
-<p>重命名远程仓库命名 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rename origin xxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果本地分支和远程分支同名.可以直接简写<code>git push origin dev</code></p>
+</blockquote>
+<h3 id="拉取远程仓库中有而本地仓库没有的数据"><a href="#拉取远程仓库中有而本地仓库没有的数据" class="headerlink" title="拉取远程仓库中有而本地仓库没有的数据"></a>拉取远程仓库中有而本地仓库没有的数据</h3><p>使用<code>git fetch &lt;remoteName&gt;</code> 可以将远程仓库中有而本地仓库中没有的数据拉取下来,不会自动合并</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git fetch origin</span><br></pre></td></tr></table></figure>
 
-<p>移除远程仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm xxx</span><br></pre></td></tr></table></figure>
+<h3 id="基于远程跟踪分支检出一个新的本地分支"><a href="#基于远程跟踪分支检出一个新的本地分支" class="headerlink" title="基于远程跟踪分支检出一个新的本地分支"></a>基于远程跟踪分支检出一个新的本地分支</h3><p>使用 <code>git checkout -b &lt;localBranch&gt; &lt;remoteName&gt;/&lt;remoteBranch&gt;</code>可以基于远程跟踪分支检出一个本地分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git checkout -b dev origin/dev</span><br></pre></td></tr></table></figure>
 
-<p><strong>这些操作都是针对本地repository的,不会对远程仓库的东西造成影响.</strong></p>
+<blockquote>
+<p>还可以使用<code>--track</code>选项简写,和上面是一样的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> git checkout --track origin/dev</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="本地分支关联远程跟踪分支"><a href="#本地分支关联远程跟踪分支" class="headerlink" title="本地分支关联远程跟踪分支"></a>本地分支关联远程跟踪分支</h3><p>使用<code>git branch -u &lt;remoteName&gt;/&lt;remoteBranch&gt;</code> 可以将本地分支与远程跟踪分支关联,也可以用于修改跟踪分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch -u  origin/dev</span><br><span class="line">Branch 'test' set up to track remote branch 'dev' from 'origin'.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>--set-upstream-to</code> : 和<code>-u</code>同样的作用</p>
+</blockquote>
+<h3 id="查看设置的所有跟踪分支"><a href="#查看设置的所有跟踪分支" class="headerlink" title="查看设置的所有跟踪分支"></a>查看设置的所有跟踪分支</h3><p>使用 <code>git branch -vv</code> 将所有的本地分支列出来并且包含更多的信息,如每一个分支正在跟踪哪个远程分支与本地分支是否是领先、落后或是都有.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch -vv</span><br><span class="line">  dev    3e910e9 add b.txt</span><br><span class="line">  master 11b7fa8 [origin/master] test commit</span><br><span class="line">* test   9ef1783 [origin/test] Initial commit</span><br></pre></td></tr></table></figure>
+
+<h3 id="拉取远程分支的修改"><a href="#拉取远程分支的修改" class="headerlink" title="拉取远程分支的修改"></a>拉取远程分支的修改</h3><p>使用 <code>git pull &lt;remote&gt; &lt;branch&gt;</code> 来拉取远程仓库中对应分支的修改到当前分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git pull origin master</span><br><span class="line">From https://github.com/jianxin-yuan/git-flow-demo</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">Updating 11b7fa8..d61e878</span><br><span class="line">Fast-forward</span><br><span class="line"> a.txt | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果当前分支已经有关系的跟踪分支,则可以简写为 git pull.</p>
+</blockquote>
+<h3 id="git-fetch-与-git-pull-的区别"><a href="#git-fetch-与-git-pull-的区别" class="headerlink" title="git fetch 与 git pull 的区别"></a>git fetch 与 git pull 的区别</h3><p><code>git fetch</code> 是将远程仓库中有而本地仓库中没有的数据拉取下来,它并不会修改工作目录中的内容.</p>
+<p><code>git pull</code> 是将远程仓库数据拉取下来,并将变化合并到当前分支. 类似git fetch &amp;&amp; git merge的组合</p>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p>使用 <code>git push origin --delete &lt;remoteBranch&gt;</code> 来删除远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git push origin --delete dev</span><br><span class="line">To https://github.com/jianxin-yuan/git-flow-demo.git</span><br><span class="line"> - [deleted]         dev</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -440,7 +485,7 @@
     <strong>本文作者： </strong>Code.Yuan</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://jianxin-yuan.github.io/blog/posts/3490727497/" title="Git关联远程仓库">https://jianxin-yuan.github.io/blog/posts/3490727497/</a>
+    <a href="https://jianxin-yuan.github.io/blog/posts/2055204920.html" title="Git分支">https://jianxin-yuan.github.io/blog/posts/2055204920.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -452,7 +497,7 @@
           
         
         <div class="post-tags">
-            <a href="/blog/tags/git-远程仓库/" rel="tag"><i class="fa fa-tag"></i> git 远程仓库</a>
+            <a href="/blog/tags/git-分支/" rel="tag"><i class="fa fa-tag"></i> git 分支</a>
           
         </div>
         <div class="post-widgets">
@@ -476,8 +521,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/blog/posts/3490727498/" rel="next" title="Git入门">
-                <i class="fa fa-chevron-left"></i> Git入门
+              <a href="/blog/posts/3490727497.html" rel="next" title="Git关联远程仓库">
+                <i class="fa fa-chevron-left"></i> Git关联远程仓库
               </a>
             
           </div>
@@ -485,6 +530,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+              <a href="/blog/posts/3012424038.html" rel="prev" title="Git修改历史及版本回退">
+                Git修改历史及版本回退 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
     </footer>
@@ -545,7 +594,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -617,7 +666,15 @@
         
           
         
-        <span class="site-state-item-count">15</span>
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -662,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git远程仓库"><span class="nav-number">1.</span> <span class="nav-text">git远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看远程仓库信息"><span class="nav-number">1.1.</span> <span class="nav-text">查看远程仓库信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#清理无效的远程追踪分支"><span class="nav-number">1.2.</span> <span class="nav-text">清理无效的远程追踪分支</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git分支"><span class="nav-number">1.</span> <span class="nav-text">Git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支创建"><span class="nav-number">1.1.</span> <span class="nav-text">分支创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看分支列表"><span class="nav-number">1.2.</span> <span class="nav-text">查看分支列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换分支"><span class="nav-number">1.3.</span> <span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地分支删除"><span class="nav-number">1.4.</span> <span class="nav-text">本地分支删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支合并"><span class="nav-number">1.5.</span> <span class="nav-text">分支合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送本地分支到远程仓库"><span class="nav-number">1.6.</span> <span class="nav-text">推送本地分支到远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取远程仓库中有而本地仓库没有的数据"><span class="nav-number">1.7.</span> <span class="nav-text">拉取远程仓库中有而本地仓库没有的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于远程跟踪分支检出一个新的本地分支"><span class="nav-number">1.8.</span> <span class="nav-text">基于远程跟踪分支检出一个新的本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地分支关联远程跟踪分支"><span class="nav-number">1.9.</span> <span class="nav-text">本地分支关联远程跟踪分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看设置的所有跟踪分支"><span class="nav-number">1.10.</span> <span class="nav-text">查看设置的所有跟踪分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取远程分支的修改"><span class="nav-number">1.11.</span> <span class="nav-text">拉取远程分支的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-fetch-与-git-pull-的区别"><span class="nav-number">1.12.</span> <span class="nav-text">git fetch 与 git pull 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除远程分支"><span class="nav-number">1.13.</span> <span class="nav-text">删除远程分支</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -691,14 +748,14 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">51k</span>
+    <span title="站点总字数">67k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:26</span>
+    <span title="站点阅读时长">1:52</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>

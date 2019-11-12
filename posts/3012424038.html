@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png?v=7.3.0">
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Verdana:300,300italic,400,400italic,700,700italic|menlo:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css">
+      
+    
+      
+    
+  <script src="https://cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-minimal.min.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    fancybox: false,
+    mediumzoom: true,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/blog/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="许多时候,在使用 Git 时,可能会因为某些原因想要修正提交历史.比较常见的是修改最后一次提交和压缩多次提交记录.">
+<meta name="keywords" content="git 修改历史,git 版本回退">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git修改历史及版本回退">
+<meta property="og:url" content="https://jianxin-yuan.github.io/blog/posts/3012424038.html">
+<meta property="og:site_name" content="Code.Yuan">
+<meta property="og:description" content="许多时候,在使用 Git 时,可能会因为某些原因想要修正提交历史.比较常见的是修改最后一次提交和压缩多次提交记录.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://image.ihezz.com/blog/20191112143915-8fOxpx.png">
+<meta property="og:updated_time" content="2019-11-12T08:32:26.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git修改历史及版本回退">
+<meta name="twitter:description" content="许多时候,在使用 Git 时,可能会因为某些原因想要修正提交历史.比较常见的是修改最后一次提交和压缩多次提交记录.">
+<meta name="twitter:image" content="http://image.ihezz.com/blog/20191112143915-8fOxpx.png">
+  <link rel="canonical" href="https://jianxin-yuan.github.io/blog/posts/3012424038">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Git修改历史及版本回退 | Code.Yuan</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code.Yuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">扯.淡</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+      
+    
+      
+    
+
+    <a href="/blog/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/jianxin-yuan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianxin-yuan.github.io/blog/blog/posts/3012424038.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code.Yuan">
+      <meta itemprop="description" content="陪伴是最长情的告白">
+      <meta itemprop="image" content="http://image.ihezz.com/blog/20190819154446-rdCB1v.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code.Yuan">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Git修改历史及版本回退
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-12 16:11:57 / 修改时间：16:32:26" itemprop="dateCreated datePublished" datetime="2019-11-12T16:11:57+08:00">2019-11-12</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">5.4k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">9 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>许多时候,在使用 Git 时,可能会因为某些原因想要修正提交历史.比较常见的是修改最后一次提交和压缩多次提交记录.</p>
+<a id="more"></a>
+
+<h3 id="修改最后一次提交"><a href="#修改最后一次提交" class="headerlink" title="修改最后一次提交"></a>修改最后一次提交</h3><p>有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了. 此时,可以运行带有 <code>--amend</code> 选项的提交命令尝试重新提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git commit --amend</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会将暂存区中的文件提交.如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是提交信息.</p>
+<h3 id="压缩提交"><a href="#压缩提交" class="headerlink" title="压缩提交"></a>压缩提交</h3><p>有时.我们的提交记录里有很多次提交,当我们要把本地的分支提交到远程仓库或是合并到主分支时.太多了提交记录会影响主分支的简洁.所有可能需要将多个提交记录压缩成一次提交.</p>
+<p>通过git log 查看本地分支的提交记录.现在我需要将下面的提交记录压缩成2次提交,即把最后6次提交压缩成1次</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">47bdbe0 (HEAD -&gt; tempBranch) amend change log</span><br><span class="line">64a74db mastermaster</span><br><span class="line">81e5a70 add b.txt</span><br><span class="line">81fa084 add line to a.txt</span><br><span class="line">d61e878 (origin/master, origin/HEAD) test update</span><br><span class="line">11b7fa8 (tag: v1.0) test commit</span><br><span class="line">9ef1783 Initial commit</span><br></pre></td></tr></table></figure>
+
+<p>运行  <code>git rebase -i HEAD~6</code> 会进入一个交互界面,下面列出了进6次提交的记录,这是按照提交时间升序排列的,上面的是比较旧的提交记录,从第二行开始将<code>pick</code>改为<code>s</code>或者<code>squash</code>,表示将后5次提交记录压缩进11b7fa8这个提交记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase -i HEAD~6</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pick 11b7fa8 test commit</span><br><span class="line">s d61e878 test update</span><br><span class="line">s 81fa084 add line to a.txt</span><br><span class="line">s 81e5a70 add b.txt</span><br><span class="line">s 64a74db mastermaster</span><br><span class="line">s 47bdbe0 amend change log</span><br></pre></td></tr></table></figure>
+
+<p>改好之后<code>Esc --&gt;  :wq</code> 保存退出.会进入另一个交互界面.这个界面是用来重写提交message的.同样的.将message改好之后保存退出就完成了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[detached HEAD 00d8e37] squash commit</span><br><span class="line"> Date: Fri Nov 1 17:18:59 2019 +0800</span><br><span class="line"> 1 file changed, 3 insertions(+)</span><br><span class="line"> create mode 100644 a.txt</span><br><span class="line">Successfully rebased and updated refs/heads/tempBranch.</span><br></pre></td></tr></table></figure>
+
+<p>此时查看git 提交记录可以看到.提交记录已经压缩完成了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">00d8e37 (HEAD -&gt; tempBranch) squash commit</span><br><span class="line">9ef1783 Initial commit</span><br></pre></td></tr></table></figure>
+
+<h3 id="更简单的压缩"><a href="#更简单的压缩" class="headerlink" title="更简单的压缩"></a>更简单的压缩</h3><p>如果只是需要将多次提交记录压缩的话.可以使用 <code>git reset --soft “HEAD~n”</code>压缩,然后使用<code>git commit --amend</code>修改提交信息.就可以达到和上面多次squash和pick一样的效果</p>
+<p>下面是例子有3次提交记录,我们现在将其压缩成1个提交记录.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">d61e878 (HEAD -&gt; master, origin/master, origin/HEAD) test update</span><br><span class="line">11b7fa8 (tag: v1.0) test commit</span><br><span class="line">9ef1783 Initial commit</span><br></pre></td></tr></table></figure>
+
+<p>运行 <code>git reset --soft &quot;HEAD~2”</code> 压缩</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git reset --soft "HEAD~2"</span><br></pre></td></tr></table></figure>
+
+<p>此时查看提交记录,只有一个了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br><span class="line">9ef1783 (HEAD -&gt; master) Initial commit</span><br></pre></td></tr></table></figure>
+
+<p>使用 git commit –amend修改提交信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git commit --amend</span><br><span class="line">[master 1249328] update commit</span><br><span class="line"> Author: jianxin.yuan &lt;53457400+jianxin-yuan@users.noreply.github.com&gt;</span><br><span class="line"> Date: Fri Nov 1 15:37:35 2019 +0800</span><br><span class="line"> 2 files changed, 3 insertions(+)</span><br><span class="line"> create mode 100644 README.md</span><br><span class="line"> create mode 100644 a.txt</span><br></pre></td></tr></table></figure>
+
+<p>此时再查看提交记录,只有一次提交记录,提交信息也是我们希望看到的了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1249328 (HEAD -&gt; master) update commit</span><br><span class="line">(END)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 这里实际是运用版本回退功能回退到了2个提交之前.然后通过修改提交信息来实现压缩的</p>
+</blockquote>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>版本回退有<code>git reset</code> 和 <code>git revert</code> 2种方法,git reset 是真正的版本回退.是将HEAD指针移到指定的版本处,而git revert 是产生一个新的提交.虽然代码回退了,但是版本依然是向前的. </p>
+<p>使用git reset回退公共远程分支的版本后，需要其他所有人手动用远程master分支覆盖本地master分支，显然，这不是优雅的回退方法</p>
+<p>git revert 命令 push的时候不需要强制更新,也不会影响其他人pull</p>
+<h5 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h5><p>例如:现在有一个3次提交的项目,如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">d61e878 (HEAD -&gt; master, origin/master, origin/HEAD) test update</span><br><span class="line">11b7fa8 (tag: v1.0) test commit</span><br><span class="line">9ef1783 Initial commit</span><br></pre></td></tr></table></figure>
+
+<p>现在发现最后一次提交d61e878 有问题.需要回退到11b7fa8版本的内容.</p>
+<p>可以使用 <code>git revert HEAD</code> </p>
+<p><img src="http://image.ihezz.com/blog/20191112143915-8fOxpx.png" alt></p>
+<p>因为git revert 会产生一次新的提交,所以会出现这个界面.输入提交的message.保存退出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git revert HEAD</span><br><span class="line">[master 5733a79] Revert "test update"</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br></pre></td></tr></table></figure>
+
+<p>查看日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">5733a79 (HEAD -&gt; master) Revert "test update"</span><br><span class="line">d61e878 (origin/master, origin/HEAD) test update</span><br><span class="line">11b7fa8 (tag: v1.0) test commit</span><br><span class="line">9ef1783 Initial commit</span><br></pre></td></tr></table></figure>
+
+<p>可以看到多了一次Revert “test update” 的提交记录.同时版本的内容也已经回退到了和11b7fa8 (tag: v1.0) test commit这个版本一致</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; 命令说明及注意点:</span><br><span class="line">&gt; git revert HEAD                     //撤销最近一次提交</span><br><span class="line">&gt; git revert HEAD~1                   //撤销上上次的提交，注意：数字从0开始</span><br><span class="line">&gt; git revert d61e878                  //撤销d61e878这次提交</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1. revert 是撤销一次提交，所以后面的commit id是你需要回滚到的版本的前一次提交</span><br><span class="line">&gt; 2. 使用revert HEAD是撤销最近的一次提交，如果你最近一次提交是用revert命令产生的，那么你再执行一次，就相当于撤销了上次的撤销操作，换句话说，你连续执行两次revert HEAD命令，就跟没执行是一样的</span><br><span class="line">&gt; 3. 使用revert HEAD~1 表示撤销最近2次提交，这个数字是从0开始的，如果你之前撤销过产生了commi id，那么也会计算在内的。</span><br><span class="line">&gt; 4. 如果使用 revert 撤销的不是最近一次提交，那么一定会有代码冲突，需要你合并代码，合并代码只需要把当前的代码全部去掉，保留之前版本的代码就可以了.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h5><p>使用git revret 回退多个版本的时候比较麻烦.会产生冲突.所以这个时候git reset就可以出场了.</p>
+<p><code>git reset --soft</code> : 表示回退到指定版本,并保持暂存区和工作目录状态,即返回对应版本git commit之前的状态.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">d61e878 (HEAD -&gt; master, origin/master, origin/HEAD) test update</span><br><span class="line">11b7fa8 (tag: v1.0) test commit</span><br><span class="line">9ef1783 Initial commit</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git reset --soft 11b7fa8a800ae110e9efb71efbbc4c3c45b66699 ##回退到11b7fa8</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git log --oneline</span><br><span class="line">11b7fa8 (HEAD -&gt; master, tag: v1.0) test commit</span><br><span class="line">9ef1783 Initial commit</span><br></pre></td></tr></table></figure>
+
+<p>可以看到git 回退了到了11b7fa8这个版本,同时查看status,发现暂存区有暂存文件,相当于回退到了11b7fa8版本之前,运行了git add 命令之后, git commit命令之前的一个阶段</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.</span><br><span class="line">  (use "git pull" to update your local branch)</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use "git reset HEAD &lt;file&gt;..." to unstage)</span><br><span class="line"></span><br><span class="line">	modified:   a.txt</span><br></pre></td></tr></table></figure>
+
+<p>此时,如果想继续回退.不要暂存区里的修改.可以使用<code>git reset HEAD &lt;file&gt;</code>继续回退</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git reset HEAD a.txt ##取消a.txt暂存</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M	a.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> yuan @ yuan-jxdeMacBook-Pro in ~/work/practice/git-flow-demo on git:master x [15:02:49]</span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.</span><br><span class="line">  (use "git pull" to update your local branch)</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use "git add &lt;file&gt;..." to update what will be committed)</span><br><span class="line">  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">	modified:   a.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use "git add" and/or "git commit -a")</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git checkout -- a.txt  ##取消a.txt修改</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git status   ##再次查看.工作目录干净了</span><br><span class="line">On branch master</span><br><span class="line">Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.</span><br><span class="line">  (use "git pull" to update your local branch)</span><br><span class="line"></span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
+
+<p><code>git reset --hard</code> : 表示回退到指定版本.不保持暂存区和工作目录状态,相当于git reset –soft 然后再取消暂存再取消修改,和上面操作之后的结果是一样的.相当于返回对应版本,且工作目录未修改过的阶段</p>
+<p><code>git reset</code> 不带参数的效果就是 git reset –soft 后再运行取消暂存的状态.相当于返回对应版本的git add命令之前的阶段</p>
+<p><strong>参考</strong>:</p>
+<p><a href="[https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86](https://git-scm.com/book/zh/v2/Git-工具-重置揭密)">Git 工具 - 重置揭密</a></p>
+<p><a href="https://segmentfault.com/a/1190000012095453" target="_blank" rel="noopener">git版本回退的不同场景操作</a></p>
+
+    </div>
+
+    
+    
+    
+
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------------华丽的Ending------------------</div>
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>别点我,不需要 ✋✋✋</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/blog/images/qr/noNeed.png" alt="Code.Yuan 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Code.Yuan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://jianxin-yuan.github.io/blog/posts/3012424038.html" title="Git修改历史及版本回退">https://jianxin-yuan.github.io/blog/posts/3012424038.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/blog/tags/git-修改历史/" rel="tag"><i class="fa fa-tag"></i> git 修改历史</a>
+          
+            <a href="/blog/tags/git-版本回退/" rel="tag"><i class="fa fa-tag"></i> git 版本回退</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/blog/posts/2055204920.html" rel="next" title="Git分支">
+                <i class="fa fa-chevron-left"></i> Git分支
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/blog/posts/1021748748.html" rel="prev" title="Git 存储功能">
+                Git 存储功能 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="http://image.ihezz.com/blog/20190819154446-rdCB1v.gif"
+      alt="Code.Yuan">
+  <p class="site-author-name" itemprop="name">Code.Yuan</p>
+  <div class="site-description motion-element" itemprop="description">陪伴是最长情的告白</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/blog/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/blog/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jianxin-yuan" title="GitHub &rarr; https://github.com/jianxin-yuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:jianxin.yuan.zzz@gmail.com" title="E-Mail &rarr; mailto:jianxin.yuan.zzz@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改最后一次提交"><span class="nav-number">1.</span> <span class="nav-text">修改最后一次提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩提交"><span class="nav-number">2.</span> <span class="nav-text">压缩提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更简单的压缩"><span class="nav-number">3.</span> <span class="nav-text">更简单的压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">4.</span> <span class="nav-text">版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#git-revert"><span class="nav-number">4.0.1.</span> <span class="nav-text">git revert</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#git-reset"><span class="nav-number">4.0.2.</span> <span class="nav-text">git reset</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code.Yuan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">67k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:52</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+
+    
+  
+<script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "default";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "topCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+  <script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  <script src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  <script src="/blog/js/utils.js?v=7.3.0"></script>
+  <script src="/blog/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/blog/js/affix.js?v=7.3.0"></script>
+  <script src="/blog/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+  
+  <script src="/blog/js/scrollspy.js?v=7.3.0"></script>
+<script src="/blog/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/blog/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/blog/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '226b6fbf8153320dca69',
+    clientSecret: 'f0c405a931332d61d529ec6a46ef3406eaa2af94',
+    repo: 'blog-comments',
+    owner: 'jianxin-yuan',
+    admin: ['jianxin-yuan'],
+    id: md5(location.pathname),
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+
+</body>
+</html>
